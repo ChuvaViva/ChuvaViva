@@ -1,0 +1,276 @@
+html,
+body,
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+    font-family: Inter;
+    color: #060041;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-white: #fff;
+    --bg-dark-blue: #0f1b2d;
+    --bg-light-blue: #147cdd;
+    --bg-light-grey: #ebebeb;
+    --color-grey: #6e6d6d;
+    --light-green: #d8ece0;
+    --green: #b3e7c9;
+    --border-green: #5bb880;
+    --light-yellow: #FBCD87;
+    --yellow: #ffdead;
+    --border-yellow: #c9984f;
+    --light-red: #ECB3BA;
+    --red: #be656f;
+    --border-red: #852732;
+    --alert: #ff0000;
+}
+
+@font-face {
+    font-family: JetBrains;
+    src: url(../fonts/JetBrainsMono-Regular.ttf);
+}
+
+@font-face {
+    font-family: Inter;
+    src: url(../fonts/Inter_28pt-Regular.ttf);
+}
+
+section {
+    height: 100dvh;
+    width: 100%;
+    padding: 30px 100px;
+    background: var(--bg-light-grey);
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: var(--bg-white);
+    padding: 15px 20px;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    z-index: 10;
+}
+
+.number {
+    color: var(--color-grey);
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    img {
+        max-height: 80px;
+    }
+
+    p {
+        font-size: 25px;
+        font-weight: 800;
+        color: var(--bg-dark-blue);
+
+        span {
+            color: var(--bg-light-blue);
+        }
+    }
+}
+
+.nav-hero-menu {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style-type: none;
+
+    li {
+        font-family: JetBrains;
+    }
+}
+
+.btn {
+    background: var(--bg-dark-blue);
+    padding: 20px 30px;
+    color: var(--bg-white);
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.home {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.title {
+    font-size: 75px;
+    line-height: 0.8;
+}
+
+.subtitle {
+    font-size: 50px;
+    line-height: 1;
+}
+
+.call-to-action {
+    height: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 50%;
+
+    p {
+        margin-top: 15px;
+        color: var(--color-grey);
+        font-size: 20px;
+    }
+}
+
+.buttons {
+    margin: 25px 0;
+    display: flex;
+    gap: 15px;
+}
+
+.buttons button:last-child {
+    background: var(--bg-white);
+    color: var(--bg-dark-blue);
+    border: 1px solid #ccc;
+}
+
+.interface {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: self-end;
+}
+
+.interface-grid {
+    height: 80%;
+    width: 100%;
+    background-image: url('../images/map.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.interface-grid::before {
+    position: absolute;
+    content: "";
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    border-radius: 50px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    z-index: 9;
+}
+
+.rect {
+    height: 80px;
+    width: 80px;
+    border-radius: 3px;
+}
+
+.light-green {
+    background-color: var(--light-green);
+    border: 1px solid var(--border-green);
+}
+
+.green {
+    background-color: var(--green);
+    border: 1px solid var(--border-green);
+}
+
+.light-yellow {
+    background-color: var(--light-yellow);
+    border: 1px solid var(--border-yellow);
+}
+
+.yellow {
+    background-color: var(--yellow);
+    border: 1px solid var(--border-yellow);
+}
+
+.light-red {
+    background-color: var(--light-red);
+    border: 1px solid var(--border-red);
+}
+
+.red {
+    background-color: var(--red);
+    border: 1px solid var(--border-red);
+}
+
+.aimed {
+    position: relative;
+}
+
+.aimed::after {
+    position: absolute;
+    content: "";
+    left: -8px;
+    top: 45%;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    border: 3px solid var(--alert);
+    background: var(--bg-white);
+}
+
+.article {
+    font-family: JetBrains;
+    color: var(--bg-light-blue);
+    font-weight: 600;
+}
+
+.text{
+    max-width: 50%;
+    p{
+        margin-top: 20px;
+    }
+}
+
+.flood{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    img{
+        max-width: 50%;
+    }
+}
