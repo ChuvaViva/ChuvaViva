@@ -29,6 +29,8 @@ html {
     --bg-light-blue: #147cdd;
     --bg-light-grey: #ebebeb;
     --color-grey: #6e6d6d;
+    --border-grey: #ccc;
+    --color-light-grey: #a3a3a3;
     --light-green: #d8ece0;
     --green: #b3e7c9;
     --border-green: #5bb880;
@@ -259,18 +261,54 @@ section {
     font-weight: 600;
 }
 
-.text{
+.text {
     max-width: 50%;
-    p{
+
+    p {
         margin-top: 20px;
+        color: var(--color-grey);
+        font-size: 18px;
     }
 }
 
-.flood{
+.flood {
     width: 100%;
     display: flex;
     align-items: center;
-    img{
+    justify-content: center;
+    margin-top: 70px;
+    gap: 30px;
+    img {
         max-width: 50%;
+        border-radius: 20px;
+    }
+}
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.card {
+    padding: 28px;
+    background: var(--bg-white);
+    border: 1px solid var(--border-grey);
+    border-radius: 20px;
+    width: 100%;
+    p{
+        font-family: JetBrains;
+        font-size: 30px;
+        color: var(--bg-dark-blue);
+    }
+    .description{
+        font-family: Inter;
+        margin: 10px 0;
+        font-size: 16px;
+    }
+    .source{
+        color: var(--color-light-grey);
+        font-size: 13px;
     }
 }
