@@ -54,10 +54,12 @@ html {
 }
 
 section {
-    height: 100dvh;
+    min-height: 100dvh;
     width: 100%;
     padding: 30px 100px;
     background: var(--bg-light-grey);
+    display: flex;
+    align-items: center;
 }
 
 .header-nav {
@@ -71,6 +73,7 @@ section {
     left: 0;
     top: 0;
     z-index: 10;
+    border-bottom: 1px solid var(--color-light-grey);
 }
 
 .number {
@@ -105,8 +108,67 @@ section {
 
     li {
         font-family: JetBrains;
+        font-size: 14px;
+        cursor: pointer;
     }
 }
+
+.mobile-menu {
+    position: absolute;
+    padding: 20px 5px;
+    background-color: var(--bg-dark-blue);
+    top: 0;
+    left: -50%;
+    height: 100dvh;
+    width: 50%;
+
+    .nav-hero-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        list-style-type: none;
+
+        li {
+            font-family: JetBrains;
+            font-size: 14px;
+            cursor: pointer;
+            color: var(--bg-white);
+        }
+    }
+}
+
+.active {
+    left: 0 !important;
+}
+
+.nav-mobile-menu {
+    width: 35px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    cursor: pointer;
+    display: none;
+}
+
+.nav-mobile-menu div {
+    width: 75%;
+    height: 2px;
+    background: rgb(0, 0, 0);
+    margin-bottom: 7px;
+}
+
+.nav-mobile-menu div:first-child {
+    width: 100%;
+    margin-bottom: 7px;
+}
+
+.nav-mobile-menu div:last-child {
+    width: 50%;
+    margin-bottom: 0px;
+}
+
 
 .btn {
     background: var(--bg-dark-blue);
@@ -122,6 +184,7 @@ section {
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: column;
 }
 
 .title {
@@ -162,14 +225,15 @@ section {
 }
 
 .interface {
-    width: 100%;
+    width: 75%;
     display: flex;
     justify-content: center;
     align-items: self-end;
+    margin: auto;
 }
 
 .interface-grid {
-    height: 80%;
+    height: 400px;
     width: 100%;
     background-image: url('../images/map.png');
     background-repeat: no-repeat;
@@ -263,6 +327,8 @@ section {
 
 .text {
     max-width: 50%;
+    display: flex;
+    flex-direction: column;
 
     p {
         margin-top: 20px;
@@ -271,13 +337,21 @@ section {
     }
 }
 
+#problema {
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    background: var(--bg-white);
+}
+
 .flood {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 20px;
     gap: 30px;
+
     img {
         max-width: 50%;
         border-radius: 20px;
@@ -297,18 +371,216 @@ section {
     border: 1px solid var(--border-grey);
     border-radius: 20px;
     width: 100%;
-    p{
+    background: var(--bg-light-grey);
+
+    p {
         font-family: JetBrains;
         font-size: 30px;
         color: var(--bg-dark-blue);
     }
-    .description{
+
+    .description {
         font-family: Inter;
         margin: 10px 0;
         font-size: 16px;
     }
-    .source{
+
+    .source {
         color: var(--color-light-grey);
         font-size: 13px;
+    }
+}
+
+#tecnologia {
+    flex-direction: column;
+}
+
+.moon {
+    width: 100%;
+    display: flex;
+
+    .text {
+        max-width: 65%;
+
+        p {
+            max-width: 70%;
+        }
+    }
+
+    img {
+        max-width: 35%;
+        border-radius: 20px;
+    }
+}
+
+.moon-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    width: 100%;
+    padding: 30px 0;
+
+    .card {
+        background: var(--bg-white);
+        position: relative;
+    }
+}
+
+.card-title {
+    width: 100%;
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    justify-content: space-between;
+    p {
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--bg-light-blue);
+    }
+}
+
+.decoration{
+    padding: 5px 8px;
+    border: 1px solid var(--color-light-grey);
+    border-radius: 50px;
+    color: var(--color-light-grey) !important;
+}
+
+.card-desc{
+    padding: 15px 0;
+    font-size: 16px !important;
+    color: var(--color-grey) !important;
+}
+
+.separator{
+    width: 100%;
+    height: 1px;
+    background: var(--color-light-grey);
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+.card-footer{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    img{
+        max-height: 30px;
+    }
+    p{
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 1199px) {
+    .text {
+        max-width: 100%;
+
+        .subtitle {
+            text-align: center;
+        }
+    }
+
+    .article {
+        text-align: start !important;
+    }
+
+    .flood {
+        flex-direction: column;
+
+        img {
+            max-width: 100%;
+        }
+    }
+
+    .cards {
+        width: 100%;
+    }
+
+    .btn-header {
+        display: none;
+    }
+
+    .number {
+        display: none;
+    }
+
+    .rect {
+        height: 50px;
+        width: 50px;
+    }
+
+    .call-to-action {
+        max-width: 100%;
+    }
+    .moon{
+        flex-direction: column;
+        img{
+            max-width: 100%;
+            padding: 15px;
+        }
+    }
+}
+
+@media(max-width: 991px) {
+    .nav-hero-menu {
+        display: none;
+    }
+
+    .nav-mobile-menu {
+        display: flex;
+    }
+    .moon-grid{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media(max-width: 850px) {
+    section {
+        padding: 30px 40px;
+    }
+
+    .interface {
+        width: 100%;
+    }
+
+    .rect {
+        height: 45px;
+        width: 45px;
+    }
+}
+
+
+@media(max-width: 500px) {
+    .rect {
+        height: 38px;
+        width: 38px;
+    }
+
+    .title {
+        font-size: 55px;
+    }
+    .moon-grid{
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 430px) {
+    .rect {
+        height: 30px;
+        width: 30px;
+    }
+}
+
+@media(max-width: 370px) {
+    .grid {
+        transform: rotate(90deg);
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .buttons {
+        flex-direction: column;
     }
 }
