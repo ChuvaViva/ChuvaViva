@@ -188,7 +188,7 @@ section {
 }
 
 .title {
-    font-size: 75px;
+    font-size: 60px;
     line-height: 0.8;
 }
 
@@ -582,5 +582,57 @@ section {
 
     .buttons {
         flex-direction: column;
+    }
+}
+
+#objetivos{
+    flex-direction: column;
+    align-items: start;
+    background: var(--bg-white);
+}
+
+.objectives-grid{
+    width: 75%;
+    margin: auto;
+    background: var(--bg-white);
+    border: 1px solid var(--color-grey);
+    height: auto;
+    border-radius: 20px;
+}
+
+.objective{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    p{
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+.objective-img{
+    border: 1px solid var(--color-grey);
+    border-radius: 8px;
+    display: flex;
+    margin: 0 20px;
+    justify-content: center;
+    align-items: center;
+    img{
+        max-width: 30px;
+        margin: 5px;
+    }
+}
+
+.objective-text{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    p{
+        padding: 0 !important;
+        color: var(--color-grey);
+    }
+    h3{
+        color: var(--bg-dark-blue);
     }
 }
