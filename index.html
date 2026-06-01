@@ -9,20 +9,22 @@
 </head>
 
 <body>
-    <section>
+    <section id="top">
         <header class="header-nav">
-            <div class="header-logo">
-                <img src="./images/logo.png" alt="logo ChuvaViva">
-                <p>Chuva<span>Viva</span></p>
-            </div>
+            <a href="#top">
+                <div class="header-logo">
+                    <img src="./images/logo.png" alt="logo ChuvaViva">
+                    <p>Chuva<span>Viva</span></p>
+                </div>
+            </a>
             <nav>
                 <ul class="nav-hero-menu">
-                    <li><span class="number">01</span> Problema</li>
-                    <li><span class="number">02</span> Tecnologia</li>
-                    <li><span class="number">03</span> Objetivos</li>
-                    <li><span class="number">04</span> Público</li>
-                    <li><span class="number">05</span> Benefícios</li>
-                    <li><span class="number">06</span> Aplicação</li>
+                    <li><a href="#problema"><span class="number">01</span> Problema</a></li>
+                    <li><a href="#tecnologia"><span class="number">02</span> Tecnologia</a></li>
+                    <li><a href="#objetivos"><span class="number">03</span> Objetivos</a></li>
+                    <li><a href="#publico"><span class="number">04</span> Público</a></li>
+                    <li><a href="#beneficios"><span class="number">05</span> Benefícios</a></li>
+                    <li><a href="#aplicacao"><span class="number">06</span> Aplicação</a></li>
                 </ul>
                 <button id="menuButton" class="nav-mobile-menu">
                     <div></div>
@@ -31,13 +33,18 @@
                 </button>
             </nav>
             <div class="mobile-menu">
+                <div>
+                    <a href="#top">
+                        <img src="./images/logo.png" alt="logo ChuvaViva">
+                    </a>
+                </div>
                 <ul class="nav-hero-menu">
-                    <li><span class="number">01</span> Problema</li>
-                    <li><span class="number">02</span> Tecnologia</li>
-                    <li><span class="number">03</span> Objetivos</li>
-                    <li><span class="number">04</span> Público</li>
-                    <li><span class="number">05</span> Benefícios</li>
-                    <li><span class="number">06</span> Aplicação</li>
+                    <li><a href="#problema"><span class="number">01</span> Problema</a></li>
+                    <li><a href="#tecnologia"><span class="number">02</span> Tecnologia</a></li>
+                    <li><a href="#objetivos"><span class="number">03</span> Objetivos</a></li>
+                    <li><a href="#publico"><span class="number">04</span> Público</a></li>
+                    <li><a href="#beneficios"><span class="number">05</span> Benefícios</a></li>
+                    <li><a href="#aplicacao"><span class="number">06</span> Aplicação</a></li>
                 </ul>
             </div>
             <button class="btn btn-header">Para Gestores</button>
@@ -259,7 +266,8 @@
         <div class="text">
             <span class="article">03 — Objetivos</span>
             <h1 class="subtitle">Reduzir o tempo entre o dado e a decisão.</h1>
-            <p>Cada objetivo é uma redução concreta de latência operacional. Da telemetria ao morador, da chuva à evacuação.</p>
+            <p>Cada objetivo é uma redução concreta de latência operacional. Da telemetria ao morador, da chuva à
+                evacuação.</p>
         </div>
         <div class="objectives-grid">
             <div class="objective">
@@ -289,7 +297,8 @@
                 </div>
                 <div class="objective-text">
                     <h3>Priorizar populações vulneráveis</h3>
-                    <p>Idosos, crianças, pessoas com deficiência e domicílios em encostas têm peso explícito no algoritmo.</p>
+                    <p>Idosos, crianças, pessoas com deficiência e domicílios em encostas têm peso explícito no
+                        algoritmo.</p>
                 </div>
             </div>
             <div class="objective">
@@ -311,7 +320,7 @@
                     <h3>Dar transparência climática ao cidadão</h3>
                     <p>O morador entende o risco da sua rua, não de um boletim regional opaco.</p>
                 </div>
-            </div>    
+            </div>
         </div>
     </section>
 
@@ -319,15 +328,130 @@
         <div class="text">
             <span class="article">04 — Público Alvo</span>
             <h1 class="subtitle">Para quem o ChuvaViva existe.</h1>
-            <p>Três frentes interdependentes. A mesma camada de decisão muda de forma de acordo com quem está olhando para ela.</p>
+            <p>Três frentes interdependentes. A mesma camada de decisão muda de forma de acordo com quem está olhando
+                para ela.</p>
         </div>
         <div class="publico">
             <div class="publico-content">
-                <img src="./images/rain.webp" alt="">
+                <div class="publico-image"></div>
+                <div class="publico-text">
+                    <span class="article">CIDADÃO</span>
+                    <h3>Famílias em áreas de risco</h3>
+                    <p>Recebe um alerta legível, com rota e ponto seguro. Sem boletim regional, sem ambiguidade.</p>
+                    <ul>
+                        <li><span class="color-green">✔</span> Alerta por SMS, app ou WhatsApp</li>
+                        <li><span class="color-green">✔</span> Rota com ponto de abrigo</li>
+                        <li><span class="color-green">✔</span> Linguagem clara e acessível</li>
+                    </ul>
+                </div>
             </div>
-            <div class="publico-content"></div>
-            <div class="publico-content"></div>
-            
+            <div class="publico-content">
+                <div class="publico-image" id="defesa"></div>
+                <div class="publico-text">
+                    <span class="article">GESTÃO PÚBLICA</span>
+                    <h3>Defesa Civil e prefeituras</h3>
+                    <p>Painel operacional unificado para decidir, despachar e auditar respostas em tempo real.</p>
+                    <ul>
+                        <li><span class="color-green">✔ </span>Painel multi-célula em tempo real</li>
+                        <li><span class="color-green">✔ </span>Despacho integrado de equipes</li>
+                        <li><span class="color-green">✔ </span>Histórico auditável de decisões</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="publico-content">
+                <div class="publico-image" id="hospital"></div>
+                <div class="publico-text">
+                    <span class="article">SERVIÇOS ESSENCIAIS</span>
+                    <h3>Hospitais, escolas, utilities</h3>
+                    <p>Preparação antecipada para suspender atividades, reforçar plantões e proteger ativos críticos.
+                    </p>
+                    <ul>
+                        <li><span class="color-green">✔ </span>Alertas por endereço institucional</li>
+                        <li><span class="color-green">✔ </span>Janela de antecipação de 1-6h</li>
+                        <li><span class="color-green">✔ </span>API para sistemas internos</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="beneficios">
+        <div class="text">
+            <span class="article">05 — Benefícios</span>
+            <h1 class="subtitle">Impacto que se mede em vidas.</h1>
+            <p>Cada benefício é uma redução de incerteza em um momento de crise — para o morador, para o gestor, para o
+                socorrista.</p>
+        </div>
+        <div class="beneficios">
+            <div class="beneficios-row1">
+                <div class="row1-item1">
+                    <div class="beneficio-title">
+                        <div class="beneficio-image">
+                            <img src="./images/icons/location.svg" alt="">
+                        </div>
+                        <span class="number">01</span>
+                    </div>
+                    <h3>Alertas hiperlocais — rua por rua, não bairro</h3>
+                    <p>A informação chega no endereço, com texto adaptado ao morador, à hora do dia e à rota disponível.
+                    </p>
+                </div>
+                <div class="row1-item2">
+                    <div class="beneficio-title">
+                        <div class="beneficio-image">
+                            <img src="./images/icons/cloud.svg" alt="">
+                        </div>
+                        <span class="number">02</span>
+                    </div>
+                    <h3>Rotas de evacuação em tempo real</h3>
+                    <p>Caminhos seguros recalculados a cada minuto conforme células de risco se alteram.</p>
+                </div>
+            </div>
+            <div class="beneficios-row2">
+                <div class="row2-item1">
+                    <div class="beneficio-title">
+                        <div class="beneficio-image">
+                            <img src="./images/icons/users.svg" alt="">
+                        </div>
+                        <span class="number">03</span>
+                    </div>
+                    <h3>Vulneráveis priorizados</h3>
+                    <p>Idosos, crianças, PCDs e populações de baixa renda recebem antes e com maior atenção operacional.
+                    </p>
+                </div>
+                <div class="row2-item2">
+                    <div class="beneficio-title">
+                        <div class="beneficio-image">
+                            <img src="./images/icons/more.svg" alt="">
+                        </div>
+                        <span class="number">04</span>
+                    </div>
+                    <h3>Transparência pública</h3>
+                    <p>Cada alerta é registrado e auditável. Cidadão e Ministério Público acessam o mesmo histórico.</p>
+                </div>
+                <div class="row2-item3">
+                    <div class="beneficio-title">
+                        <div class="beneficio-image">
+                            <img src="./images/icons/clock.svg" alt="">
+                        </div>
+                        <span class="number">05</span>
+                    </div>
+                    <h3>Decisão em segundos, não horas</h3>
+                    <p>A latência entre o dado coletado e a decisão acionável cai de horas para segundos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="aplicacao">
+        <div class="text">
+            <span class="article">06 — Aplicação no dia a dia</span>
+            <h1 class="subtitle">Antes da primeira gota, a decisão certa.</h1>
+            <p>Um fluxo de quatro passos que conecta a leitura de satélite ao morador na rua e ao agente da Defesa Civil em campo.</p>
+        </div>
+        <div class="aplicacao">
+            <div class="aplicacao-image">
+                <img src="./images/deslizamento.jpg" alt="">
+            </div>
+
         </div>
     </section>
 
