@@ -6,6 +6,14 @@ const row1Item2 = document.querySelector(".row1-item2")
 const row2Item1 = document.querySelector(".row2-item1")
 const row2Item2 = document.querySelector(".row2-item2")
 const row2Item3 = document.querySelector(".row2-item3")
+const question = document.querySelector("#label")
+const option1 = document.querySelector("#option1")
+const option2 = document.querySelector("#option2")
+const option3 = document.querySelector("#option3")
+const option4 = document.querySelector("#option4")
+const prox = document.querySelector("#prox")
+const prev = document.querySelector("#prev")
+let currentQuestion = 1
 
 const questions = {
     1: {
@@ -120,6 +128,8 @@ const questions = {
     }
 }
 
+console.log(questions[currentQuestion].opcoes[1])
+
 menuButton.addEventListener("click", () => {
     console.log("clicou aqui")
     mobileMenu.classList.toggle("active")
@@ -153,4 +163,27 @@ row2Item3.addEventListener("click", () => {
     row2Item3.classList.toggle("col-lg-6")
     row2Item3.classList.toggle("style")
     console.log("Clicou aqui 2")
+})
+
+prox.addEventListener("click", () => {
+    currentQuestion = currentQuestion + 1
+    question.textContent = questions[currentQuestion].pergunta
+    option1.textContent = questions[currentQuestion].opcoes[0]
+    option2.textContent = questions[currentQuestion].opcoes[1]
+    option3.textContent = questions[currentQuestion].opcoes[2]
+    option4.textContent = questions[currentQuestion].opcoes[3]
+})
+
+prev.addEventListener("click", () => {
+    if (currentQuestion === 1) {
+        null
+    } else {
+        currentQuestion = currentQuestion - 1
+        question.textContent = questions[currentQuestion].pergunta
+        option1.textContent = questions[currentQuestion].opcoes[0]
+        option2.textContent = questions[currentQuestion].opcoes[1]
+        option3.textContent = questions[currentQuestion].opcoes[2]
+        option4.textContent = questions[currentQuestion].opcoes[3]
+
+    }
 })
