@@ -238,6 +238,7 @@ button {
     background: var(--bg-white);
     padding: 20px 30px;
     color: var(--bg-dark-blue);
+    border: 1px solid var(--bg-dark-blue);
     border-radius: 15px;
     font-size: 15px;
     font-weight: 750;
@@ -305,12 +306,6 @@ button {
     margin: 25px 0;
     display: flex;
     gap: 15px;
-}
-
-.buttons button:last-child {
-    background: var(--bg-white);
-    color: var(--bg-dark-blue);
-    border: 1px solid #ccc;
 }
 
 .interface {

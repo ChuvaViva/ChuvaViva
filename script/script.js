@@ -13,7 +13,10 @@ const option3 = document.querySelector("#option3")
 const option4 = document.querySelector("#option4")
 const prox = document.querySelector("#prox")
 const prev = document.querySelector("#prev")
+const send = document.querySelector("#send")
+const questionIndex = document.querySelector("#question-index")
 let currentQuestion = 1
+let corretas = 0
 
 const questions = {
     1: {
@@ -128,6 +131,39 @@ const questions = {
     }
 }
 
+const answers = {
+    1: {
+        resposta: 0
+    },
+    2: {
+        resposta: 0
+    },
+    3: {
+        resposta: 0
+    },
+    4: {
+        resposta: 0
+    },
+    5: {
+        resposta: 0
+    },
+    6: {
+        resposta: 0
+    },
+    7: {
+        resposta: 0
+    },
+    8: {
+        resposta: 0
+    },
+    9: {
+        resposta: 0
+    },
+    10: {
+        resposta: 0
+    },
+}
+
 
 menuButton.addEventListener("click", () => {
     mobileMenu.classList.toggle("active")
@@ -165,7 +201,9 @@ option3.textContent = questions[1].opcoes[2]
 option4.textContent = questions[1].opcoes[3]
 prev.classList.add("d-none")
 
+
 const updateButtons = () => {
+    questionIndex.textContent = `Pergunta nº ${currentQuestion}`
     if (currentQuestion === 1) {
         prev.classList.add("d-none")
     } else {
@@ -173,20 +211,57 @@ const updateButtons = () => {
     }
 
     if (currentQuestion === 10) {
-        prox.classList.add("d-none")
+        prox.textContent = "Enviar"
     } else {
         prox.classList.remove("d-none")
     }
+
+    console.log(answers)
+}
+
+const verifyBlank = () => {
+    if (document.querySelector('input[name="option"]:checked') === null) {
+        return false
+    } else {
+        return true
+    }
+}
+
+const verifyAnswer = (index) =>{
+    const user = answers[index].resposta
+    const quiz = questions[currentQuestion].correta
+    if(user === quiz){
+        corretas = corretas + 1
+    }
+    console.log(corretas)
+}
+
+const setAnswer = () => {
+    const index = answers[currentQuestion].resposta
+    const radios = (document.querySelectorAll('input[name="option"]'))
+    console.log(radios[index - 1])
+    radios[index - 1].checked = true
 }
 
 prox.addEventListener("click", () => {
-    currentQuestion = currentQuestion + 1
-    question.textContent = questions[currentQuestion].pergunta
-    option1.textContent = questions[currentQuestion].opcoes[0]
-    option2.textContent = questions[currentQuestion].opcoes[1]
-    option3.textContent = questions[currentQuestion].opcoes[2]
-    option4.textContent = questions[currentQuestion].opcoes[3]
-    updateButtons()
+    if (!verifyBlank()) {
+        window.alert("Insira uma resposta")
+    } else {
+        answers[currentQuestion].resposta = Number(document.querySelector('input[name="option"]:checked').value)
+        verifyAnswer(currentQuestion)
+        currentQuestion = currentQuestion + 1
+        if (answers[currentQuestion].resposta != 0) {
+            setAnswer()
+        } else {
+            document.querySelector('input[name="option"]:checked').checked = false
+            question.textContent = questions[currentQuestion].pergunta
+            option1.textContent = questions[currentQuestion].opcoes[0]
+            option2.textContent = questions[currentQuestion].opcoes[1]
+            option3.textContent = questions[currentQuestion].opcoes[2]
+            option4.textContent = questions[currentQuestion].opcoes[3]
+            updateButtons()
+        }
+    }
 })
 
 prev.addEventListener("click", () => {
@@ -196,5 +271,7 @@ prev.addEventListener("click", () => {
     option2.textContent = questions[currentQuestion].opcoes[1]
     option3.textContent = questions[currentQuestion].opcoes[2]
     option4.textContent = questions[currentQuestion].opcoes[3]
+    corretas = corretas - 1
+    setAnswer()
     updateButtons()
 })
