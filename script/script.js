@@ -128,10 +128,8 @@ const questions = {
     }
 }
 
-console.log(questions[currentQuestion].opcoes[1])
 
 menuButton.addEventListener("click", () => {
-    console.log("clicou aqui")
     mobileMenu.classList.toggle("active")
     navMobileMenu.classList.toggle("close")
 })
@@ -139,31 +137,47 @@ menuButton.addEventListener("click", () => {
 row1Item1.addEventListener("click", () => {
     row1Item1.classList.toggle("col-lg-8")
     row1Item1.classList.toggle("style")
-    console.log("Clicou aqui 1")
 })
 row1Item2.addEventListener("click", () => {
     row1Item2.classList.toggle("col-lg-8")
     row1Item2.classList.toggle("style")
-    console.log("Clicou aqui 2")
 })
 
 row2Item1.addEventListener("click", () => {
     row2Item1.classList.toggle("col-lg-6")
     row2Item1.classList.toggle("style")
-    console.log("Clicou aqui 2")
 })
 
 row2Item2.addEventListener("click", () => {
     row2Item2.classList.toggle("col-lg-6")
     row2Item2.classList.toggle("style")
-    console.log("Clicou aqui 2")
 })
 
 row2Item3.addEventListener("click", () => {
     row2Item3.classList.toggle("col-lg-6")
     row2Item3.classList.toggle("style")
-    console.log("Clicou aqui 2")
 })
+
+question.textContent = questions[1].pergunta
+option1.textContent = questions[1].opcoes[0]
+option2.textContent = questions[1].opcoes[1]
+option3.textContent = questions[1].opcoes[2]
+option4.textContent = questions[1].opcoes[3]
+prev.classList.add("d-none")
+
+const updateButtons = () => {
+    if (currentQuestion === 1) {
+        prev.classList.add("d-none")
+    } else {
+        prev.classList.remove("d-none")
+    }
+
+    if (currentQuestion === 10) {
+        prox.classList.add("d-none")
+    } else {
+        prox.classList.remove("d-none")
+    }
+}
 
 prox.addEventListener("click", () => {
     currentQuestion = currentQuestion + 1
@@ -172,18 +186,15 @@ prox.addEventListener("click", () => {
     option2.textContent = questions[currentQuestion].opcoes[1]
     option3.textContent = questions[currentQuestion].opcoes[2]
     option4.textContent = questions[currentQuestion].opcoes[3]
+    updateButtons()
 })
 
 prev.addEventListener("click", () => {
-    if (currentQuestion === 1) {
-        null
-    } else {
-        currentQuestion = currentQuestion - 1
-        question.textContent = questions[currentQuestion].pergunta
-        option1.textContent = questions[currentQuestion].opcoes[0]
-        option2.textContent = questions[currentQuestion].opcoes[1]
-        option3.textContent = questions[currentQuestion].opcoes[2]
-        option4.textContent = questions[currentQuestion].opcoes[3]
-
-    }
+    currentQuestion = currentQuestion - 1
+    question.textContent = questions[currentQuestion].pergunta
+    option1.textContent = questions[currentQuestion].opcoes[0]
+    option2.textContent = questions[currentQuestion].opcoes[1]
+    option3.textContent = questions[currentQuestion].opcoes[2]
+    option4.textContent = questions[currentQuestion].opcoes[3]
+    updateButtons()
 })
