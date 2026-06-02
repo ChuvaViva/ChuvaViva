@@ -1045,6 +1045,14 @@ form{
     padding: 25px;
 }
 
+.d-none{
+    display: none;
+}
+
+.d-block{
+    display: block;
+}
+
 @media(max-width: 1199px) {
     .text {
         min-width: 100%;
