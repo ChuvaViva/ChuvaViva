@@ -1029,6 +1029,15 @@ Footer {
     }
 }
 
+#form{
+    background: var(--bg-white);
+}
+
+.form-title{
+    font-size: 50px;
+    text-align: center  ;
+}
+
 @media(max-width: 1199px) {
     .text {
         min-width: 100%;
