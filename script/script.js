@@ -16,9 +16,11 @@ const prev = document.querySelector("#prev")
 const send = document.querySelector("#send")
 const questionIndex = document.querySelector("#question-index")
 const buttons = document.querySelector("#buttons")
-const result = document.querySelector("#result")
+const explanations = document.querySelector(".explanations")
+const explanation = document.querySelector("#explanation")
 let currentQuestion = 1
 let corretas = 0
+let enviado = false
 
 const questions = {
     1: {
@@ -29,7 +31,7 @@ const questions = {
             "Ausência de estações meteorológicas no Brasil",
             "Falta de financiamento para a Defesa Civil"
         ],
-        correta: 1,
+        correta: 2,
         explicacao: "O ChuvaViva parte da premissa de que os dados já existem — o gargalo está em transformá-los em decisões hiperlocais a tempo de salvar vidas."
     },
     2: {
@@ -40,7 +42,7 @@ const questions = {
             "Mariana em 2015",
             "Rio de Janeiro em 2011"
         ],
-        correta: 1,
+        correta: 2,
         explicacao: "Petrópolis em 2022 ilustrou a 'fratura': alertas regionais chegaram tarde demais para evitar a catástrofe."
     },
     3: {
@@ -51,7 +53,7 @@ const questions = {
             "100 m por célula",
             "10 m por célula"
         ],
-        correta: 2,
+        correta: 3,
         explicacao: "O sistema calcula risco em grid de 100 m — fino o suficiente para diferenciar uma rua da outra na mesma encosta."
     },
     4: {
@@ -62,7 +64,7 @@ const questions = {
             "SRTM / NASA",
             "OpenStreetMap"
         ],
-        correta: 2,
+        correta: 3,
         explicacao: "O SRTM da NASA fornece altimetria global de 30 m, usada para modelar fluxo de água e encostas."
     },
     5: {
@@ -73,7 +75,7 @@ const questions = {
             "5G e Zigbee",
             "Satélite VSAT"
         ],
-        correta: 1,
+        correta: 2,
         explicacao: "Os pluviômetros e sensores ribeirinhos baseados em ESP32 transmitem via LoRa e LTE-M, protocolos adequados para IoT em campo."
     },
     6: {
@@ -84,7 +86,7 @@ const questions = {
             "1 a 6 horas",
             "12 a 24 horas"
         ],
-        correta: 2,
+        correta: 3,
         explicacao: "A janela de antecipação de 1 a 6 horas permite que hospitais, escolas e utilities se preparem antes do evento."
     },
     7: {
@@ -95,7 +97,7 @@ const questions = {
             "MongoDB + Turf.js",
             "SQLite + GDAL"
         ],
-        correta: 1,
+        correta: 2,
         explicacao: "O PostGIS é a extensão espacial do PostgreSQL usada para operações geoespaciais em escala no núcleo do sistema."
     },
     8: {
@@ -106,7 +108,7 @@ const questions = {
             "Idosos, crianças, PCDs e populações de baixa renda",
             "Gestores públicos e socorristas"
         ],
-        correta: 2,
+        correta: 3,
         explicacao: "O algoritmo prioriza idosos, crianças, pessoas com deficiência e populações de baixa renda — os mais vulneráveis durante desastres."
     },
     9: {
@@ -117,7 +119,7 @@ const questions = {
             "90 dias",
             "180 dias"
         ],
-        correta: 2,
+        correta: 3,
         explicacao: "O ChuvaViva opera como uma camada sobre dados públicos existentes e promete implantação em até 90 dias para o município piloto."
     },
     10: {
@@ -128,7 +130,7 @@ const questions = {
             "Mais de 2.000 mortes por ano e R$ 100 bi em prejuízos",
             "Cerca de 500 mortes por ano e R$ 10 bi em prejuízos"
         ],
-        correta: 1,
+        correta: 2,
         explicacao: "Os dados do CEMADEN, CRED e CNM apontam 847 mortes médias por ano e R$ 27 bi em prejuízos acumulados na última década."
     }
 }
@@ -204,21 +206,34 @@ option4.textContent = questions[1].opcoes[3]
 prev.classList.add("d-none")
 
 
-const updateButtons = () => {
+const updateInfo = () => {
     questionIndex.textContent = `Pergunta nº ${currentQuestion}`
+    question.textContent = questions[currentQuestion].pergunta
+    option1.textContent = questions[currentQuestion].opcoes[0]
+    option2.textContent = questions[currentQuestion].opcoes[1]
+    option3.textContent = questions[currentQuestion].opcoes[2]
+    option4.textContent = questions[currentQuestion].opcoes[3]
     if (currentQuestion === 1) {
         prev.classList.add("d-none")
     } else {
         prev.classList.remove("d-none")
     }
-
     if (currentQuestion === 10) {
-        prox.textContent = "Enviar"
+        if (enviado) {
+            prox.classList.add("d-none")
+            prox.textContent = "Próximo"
+        } else {
+            prox.textContent = "Enviar"
+        }
     } else {
         prox.classList.remove("d-none")
     }
 
-    console.log(answers)
+    if(enviado){
+        explanations.classList.remove("d-none")
+        explanation.textContent = questions[currentQuestion].explicacao
+        console.log(answers)
+    }
 }
 
 const verifyBlank = () => {
@@ -235,54 +250,54 @@ const verifyAnswer = (index) => {
     if (user === quiz) {
         corretas = corretas + 1
     }
-    console.log(corretas)
 }
 
 const setAnswer = () => {
     const index = answers[currentQuestion].resposta
     const radios = (document.querySelectorAll('input[name="option"]'))
-    console.log(radios[index - 1])
     radios[index - 1].checked = true
 }
 
-const showResult = () => {
-    window.alert(`Corretas: ${corretas}`)
-    console.log(corretas)
-    buttons.classList.add("d-none")
-}
 
 prox.addEventListener("click", () => {
     if (!verifyBlank()) {
         window.alert("Insira uma resposta")
     } else {
-        answers[currentQuestion].resposta = Number(document.querySelector('input[name="option"]:checked').value)
-        verifyAnswer(currentQuestion)
-        if (answers[10].resposta != 0) {
-            showResult()
-        }
-        currentQuestion = currentQuestion + 1
-        if (answers[currentQuestion].resposta != 0) {
-            setAnswer()
+        if (!enviado) {
+            answers[currentQuestion].resposta = Number(document.querySelector('input[name="option"]:checked').value)
+            verifyAnswer(currentQuestion)
+            if (currentQuestion === 10) {
+                console.log("Emtrou aqui")
+                enviado = true
+                currentQuestion = 10
+                window.alert(`Corretas: ${corretas}`)
+                console.log(currentQuestion)
+                updateInfo()
+                return
+            }
+            currentQuestion = currentQuestion + 1
+            if (answers[currentQuestion].resposta != 0) {
+                setAnswer()
+            } else {
+                document.querySelector('input[name="option"]:checked').checked = false
+
+                updateInfo()
+            }
         } else {
-            document.querySelector('input[name="option"]:checked').checked = false
-            question.textContent = questions[currentQuestion].pergunta
-            option1.textContent = questions[currentQuestion].opcoes[0]
-            option2.textContent = questions[currentQuestion].opcoes[1]
-            option3.textContent = questions[currentQuestion].opcoes[2]
-            option4.textContent = questions[currentQuestion].opcoes[3]
-            updateButtons()
+            currentQuestion = currentQuestion + 1
+            setAnswer()
+            updateInfo()
         }
     }
+    console.log(currentQuestion)
 })
 
 prev.addEventListener("click", () => {
+    if (!enviado) {
+        corretas = corretas - 1
+    }
     currentQuestion = currentQuestion - 1
-    question.textContent = questions[currentQuestion].pergunta
-    option1.textContent = questions[currentQuestion].opcoes[0]
-    option2.textContent = questions[currentQuestion].opcoes[1]
-    option3.textContent = questions[currentQuestion].opcoes[2]
-    option4.textContent = questions[currentQuestion].opcoes[3]
-    corretas = corretas - 1
     setAnswer()
-    updateButtons()
+    updateInfo()
+    console.log(currentQuestion)
 })

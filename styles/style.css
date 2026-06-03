@@ -407,7 +407,7 @@ button {
 .aimed::after {
     position: absolute;
     content: "";
-    left: -var(--p-8);
+    left: calc(var(--p-8) * -1);
     top: 45%;
     height: var(--p-10);
     width: var(--p-10);
