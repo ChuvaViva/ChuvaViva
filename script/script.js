@@ -15,6 +15,8 @@ const prox = document.querySelector("#prox")
 const prev = document.querySelector("#prev")
 const send = document.querySelector("#send")
 const questionIndex = document.querySelector("#question-index")
+const buttons = document.querySelector("#buttons")
+const result = document.querySelector("#result")
 let currentQuestion = 1
 let corretas = 0
 
@@ -227,10 +229,10 @@ const verifyBlank = () => {
     }
 }
 
-const verifyAnswer = (index) =>{
+const verifyAnswer = (index) => {
     const user = answers[index].resposta
     const quiz = questions[currentQuestion].correta
-    if(user === quiz){
+    if (user === quiz) {
         corretas = corretas + 1
     }
     console.log(corretas)
@@ -243,12 +245,21 @@ const setAnswer = () => {
     radios[index - 1].checked = true
 }
 
+const showResult = () => {
+    window.alert(`Corretas: ${corretas}`)
+    console.log(corretas)
+    buttons.classList.add("d-none")
+}
+
 prox.addEventListener("click", () => {
     if (!verifyBlank()) {
         window.alert("Insira uma resposta")
     } else {
         answers[currentQuestion].resposta = Number(document.querySelector('input[name="option"]:checked').value)
         verifyAnswer(currentQuestion)
+        if (answers[10].resposta != 0) {
+            showResult()
+        }
         currentQuestion = currentQuestion + 1
         if (answers[currentQuestion].resposta != 0) {
             setAnswer()
