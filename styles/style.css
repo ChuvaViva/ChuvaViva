@@ -1038,7 +1038,31 @@ Footer {
 
 form{
     padding: 25px;
+    display: flex;
+    flex-direction: column;
+    label{
+        font-family: Inter;
+        padding: 15px 0px;
+
+    }
 }
+
+.questions{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    input{
+    }
+}
+
+.question{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
 
 .d-none{
     display: none;
