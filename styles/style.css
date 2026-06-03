@@ -48,6 +48,19 @@ a {
     --red: #be656f;
     --border-red: #852732;
     --alert: #ff0000;
+    --p-border: 1px;
+    --p-100: 100px;
+    --p-30: 30px;
+    --p-20: 20px;
+    --p-15: 15px;
+    --p-14: 14px;
+    --p-10: 10px;
+    --p-60: 60px;
+    --p-50: 50px;
+    --p-80: 80px;
+    --p-8: 8px;
+    --p-5: 5px;
+    --p-2: 2px;
 }
 
 @font-face {
@@ -63,7 +76,7 @@ a {
 section {
     min-height: 100dvh;
     width: 100%;
-    padding: 30px 100px;
+    padding: var(--p-30) var(--p-100);
     background: var(--bg-light-grey);
     display: flex;
     align-items: center;
@@ -74,13 +87,13 @@ section {
     align-items: center;
     justify-content: space-around;
     background: var(--bg-white);
-    padding: 15px 20px;
+    padding: var(--p-15) var(--p-20);
     position: fixed;
     right: 0;
     left: 0;
     top: 0;
     z-index: 10;
-    border-bottom: 1px solid var(--color-light-grey);
+    border-bottom: var(--p-border) solid var(--color-light-grey);
 }
 
 .number {
@@ -90,14 +103,14 @@ section {
 .header-logo {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: var(--p-5);
 
     img {
-        max-height: 80px;
+        max-height: var(--p-80);
     }
 
     p {
-        font-size: 25px;
+        font-size: var(--p-20);
         font-weight: 800;
         color: var(--bg-dark-blue);
 
@@ -110,14 +123,14 @@ section {
 .nav-hero-menu {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: var(--p-30);
     list-style-type: none;
 
     li {
         a {
             color: var(--color-grey);
             font-family: JetBrains;
-            font-size: 14px;
+            font-size: var(--p-14);
             cursor: pointer;
         }
     }
@@ -125,7 +138,7 @@ section {
 
 .mobile-menu {
     position: absolute;
-    padding: 20px 5px;
+    padding: var(--p-20) var(--p-5);
     background-color: var(--bg-dark-blue);
     top: 0;
     left: -50%;
@@ -137,10 +150,10 @@ section {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 20px;
+        margin-bottom: var(--p-20);
 
         img {
-            max-height: 80px;
+            max-height: var(--p-80);
         }
     }
 
@@ -148,13 +161,13 @@ section {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 30px;
+        gap: var(--p-30);
         list-style-type: none;
 
         li {
             a {
                 font-family: JetBrains;
-                font-size: 14px;
+                font-size: var(--p-14);
                 cursor: pointer;
                 color: var(--bg-white);
             }
@@ -167,7 +180,7 @@ section {
 }
 
 .nav-mobile-menu {
-    width: 35px;
+    width: var(--p-30);
     height: auto;
     display: flex;
     flex-direction: column;
@@ -180,19 +193,19 @@ section {
 .nav-mobile-menu div {
     transition: .3s ease-in;
     width: 75%;
-    height: 2px;
+    height: var(--p-2);
     background: rgb(0, 0, 0);
-    margin-bottom: 7px;
+    margin-bottom: var(--p-5);
 }
 
 .nav-mobile-menu div:first-child {
     width: 100%;
-    margin-bottom: 7px;
+    margin-bottom: var(--p-5);
 }
 
 .nav-mobile-menu div:last-child {
     width: 50%;
-    margin-bottom: 0px;
+    margin-bottom: 0;
 }
 
 .close {
@@ -220,10 +233,10 @@ button {
 
 .btn {
     background: var(--bg-dark-blue);
-    padding: 20px 30px;
+    padding: var(--p-20) var(--p-30);
     color: var(--bg-white);
-    border-radius: 15px;
-    font-size: 15px;
+    border-radius: var(--p-15);
+    font-size: var(--p-15);
     font-weight: 750;
     cursor: pointer;
 }
@@ -231,16 +244,16 @@ button {
 .btn:hover {
     background: var(--bg-white);
     color: var(--bg-dark-blue);
-    border: 1px solid var(--bg-dark-blue);
+    border: var(--p-border) solid var(--bg-dark-blue);
 }
 
 .btn-white {
     background: var(--bg-white);
-    padding: 20px 30px;
+    padding: var(--p-20) var(--p-30);
     color: var(--bg-dark-blue);
-    border: 1px solid var(--bg-dark-blue);
-    border-radius: 15px;
-    font-size: 15px;
+    border: var(--p-border) solid var(--bg-dark-blue);
+    border-radius: var(--p-15);
+    font-size: var(--p-15);
     font-weight: 750;
     cursor: pointer;
 }
@@ -248,16 +261,16 @@ button {
 .btn-white:hover {
     background: var(--bg-dark-blue);
     color: var(--bg-white);
-    border: 1px solid var(--bg-white);
+    border: var(--p-border) solid var(--bg-white);
 }
 
 .btn-transparent {
     background: transparent;
-    border: 1px solid var(--bg-white);
-    padding: 20px 30px;
+    border: var(--p-border) solid var(--bg-white);
+    padding: var(--p-20) var(--p-30);
     color: var(--bg-white);
-    border-radius: 15px;
-    font-size: 15px;
+    border-radius: var(--p-15);
+    font-size: var(--p-15);
     font-weight: 750;
     cursor: pointer;
 }
@@ -276,36 +289,36 @@ button {
 }
 
 .title {
-    font-size: 60px;
+    font-size: var(--p-60);
     line-height: 0.8;
     text-align: start;
 }
 
 .subtitle {
-    font-size: 50px;
+    font-size: var(--p-50);
     line-height: 1;
     text-align: start;
 }
 
 .call-to-action {
     height: 100%;
-    padding: 30px;
+    padding: var(--p-30);
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-width: 50%;
 
     p {
-        margin-top: 15px;
+        margin-top: var(--p-15);
         color: var(--color-grey);
-        font-size: 20px;
+        font-size: var(--p-20);
     }
 }
 
 .buttons {
-    margin: 25px 0;
+    margin: var(--p-20) 0;
     display: flex;
-    gap: 15px;
+    gap: var(--p-15);
 }
 
 .interface {
@@ -317,13 +330,13 @@ button {
 }
 
 .interface-grid {
-    height: 400px;
+    height: calc(var(--p-100) * 4);
     width: 100%;
     background-image: url('../images/map.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    border-radius: 50px;
+    border-radius: var(--p-50);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -341,7 +354,7 @@ button {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
-    border-radius: 50px;
+    border-radius: var(--p-50);
 }
 
 .grid {
@@ -352,39 +365,39 @@ button {
 }
 
 .rect {
-    height: 80px;
-    width: 80px;
-    border-radius: 3px;
+    height: var(--p-80);
+    width: var(--p-80);
+    border-radius: calc(var(--p-border) * 3);
 }
 
 .light-green {
     background-color: var(--light-green);
-    border: 1px solid var(--border-green);
+    border: var(--p-border) solid var(--border-green);
 }
 
 .green {
     background-color: var(--green);
-    border: 1px solid var(--border-green);
+    border: var(--p-border) solid var(--border-green);
 }
 
 .light-yellow {
     background-color: var(--light-yellow);
-    border: 1px solid var(--border-yellow);
+    border: var(--p-border) solid var(--border-yellow);
 }
 
 .yellow {
     background-color: var(--yellow);
-    border: 1px solid var(--border-yellow);
+    border: var(--p-border) solid var(--border-yellow);
 }
 
 .light-red {
     background-color: var(--light-red);
-    border: 1px solid var(--border-red);
+    border: var(--p-border) solid var(--border-red);
 }
 
 .red {
     background-color: var(--red);
-    border: 1px solid var(--border-red);
+    border: var(--p-border) solid var(--border-red);
 }
 
 .aimed {
@@ -394,12 +407,12 @@ button {
 .aimed::after {
     position: absolute;
     content: "";
-    left: -8px;
+    left: -var(--p-8);
     top: 45%;
-    height: 10px;
-    width: 10px;
+    height: var(--p-10);
+    width: var(--p-10);
     border-radius: 50%;
-    border: 3px solid var(--alert);
+    border: calc(var(--p-border) * 3) solid var(--alert);
     background: var(--bg-white);
 }
 
@@ -415,9 +428,9 @@ button {
     flex-direction: column;
 
     p {
-        margin-top: 20px;
+        margin-top: var(--p-20);
         color: var(--color-grey);
-        font-size: 18px;
+        font-size: var(--p-20);
     }
 }
 
@@ -433,12 +446,12 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 20px;
-    gap: 30px;
+    margin-top: var(--p-20);
+    gap: var(--p-30);
 
     img {
         max-width: 50%;
-        border-radius: 20px;
+        border-radius: var(--p-20);
     }
 }
 
@@ -446,32 +459,32 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: var(--p-15);
 }
 
 .card {
-    padding: 28px;
+    padding: var(--p-30);
     background: var(--bg-white);
-    border: 1px solid var(--border-grey);
-    border-radius: 20px;
+    border: var(--p-border) solid var(--border-grey);
+    border-radius: var(--p-20);
     width: 100%;
     background: var(--bg-light-grey);
 
     p {
         font-family: JetBrains;
-        font-size: 30px;
+        font-size: var(--p-30);
         color: var(--bg-dark-blue);
     }
 
     .description {
         font-family: Inter;
-        margin: 10px 0;
-        font-size: 16px;
+        margin: var(--p-10) 0;
+        font-size: var(--p-15);
     }
 
     .source {
         color: var(--color-light-grey);
-        font-size: 13px;
+        font-size: var(--p-14);
     }
 }
 
@@ -493,16 +506,16 @@ button {
 
     img {
         max-width: 35%;
-        border-radius: 20px;
+        border-radius: var(--p-20);
     }
 }
 
 .moon-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
+    gap: var(--p-15);
     width: 100%;
-    padding: 30px 0;
+    padding: var(--p-30) 0;
 
     .card {
         background: var(--bg-white);
@@ -513,50 +526,50 @@ button {
 .card-title {
     width: 100%;
     display: flex;
-    font-size: 14px;
+    font-size: var(--p-14);
     align-items: center;
     justify-content: space-between;
 
     p {
-        font-size: 14px;
+        font-size: var(--p-14);
         font-weight: 800;
         color: var(--bg-light-blue);
     }
 }
 
 .decoration {
-    padding: 5px 8px;
-    border: 1px solid var(--color-light-grey);
-    border-radius: 50px;
+    padding: var(--p-5) var(--p-8);
+    border: var(--p-border) solid var(--color-light-grey);
+    border-radius: var(--p-50);
     color: var(--color-light-grey) !important;
 }
 
 .card-desc {
-    padding: 15px 0;
-    font-size: 16px !important;
+    padding: var(--p-15) 0;
+    font-size: var(--p-15) !important;
     color: var(--color-grey) !important;
 }
 
 .separator {
     width: 100%;
-    height: 1px;
+    height: var(--p-border);
     background: var(--color-light-grey);
-    border-radius: 5px;
-    margin: 10px 0;
+    border-radius: var(--p-5);
+    margin: var(--p-10) 0;
 }
 
 .card-footer {
     display: flex;
     align-items: center;
     justify-content: start;
-    gap: 10px;
+    gap: var(--p-10);
 
     img {
-        max-height: 30px;
+        max-height: var(--p-30);
     }
 
     p {
-        font-size: 14px;
+        font-size: var(--p-14);
     }
 }
 
@@ -571,35 +584,35 @@ button {
     width: 75%;
     margin: auto;
     background: var(--bg-white);
-    border: 1px solid var(--color-grey);
+    border: var(--p-border) solid var(--color-grey);
     height: auto;
-    border-radius: 20px;
+    border-radius: var(--p-20);
 }
 
 .objective {
     width: 100%;
-    padding: 20px;
+    padding: var(--p-20);
     display: flex;
     align-items: center;
-    border-bottom: 1px solid var(--color-grey);
+    border-bottom: var(--p-border) solid var(--color-grey);
 
     p {
-        padding: 10px;
+        padding: var(--p-10);
         text-align: start;
     }
 }
 
 .objective-img {
-    border: 1px solid var(--color-grey);
-    border-radius: 8px;
+    border: var(--p-border) solid var(--color-grey);
+    border-radius: var(--p-8);
     display: flex;
-    margin: 0 20px;
+    margin: 0 var(--p-20);
     justify-content: center;
     align-items: center;
 
     img {
-        max-width: 30px;
-        margin: 5px;
+        max-width: var(--p-30);
+        margin: var(--p-5);
     }
 }
 
@@ -634,7 +647,7 @@ button {
     justify-content: space-around;
     width: 100%;
     height: auto;
-    padding: 30px;
+    padding: var(--p-30);
     flex-wrap: wrap;
 }
 
@@ -643,8 +656,8 @@ button {
     background: var(--bg-white);
     display: flex;
     flex-direction: column;
-    border-radius: 15px;
-    box-shadow: 1px 1px 100px rgba(0, 0, 0, 0.05);
+    border-radius: var(--p-15);
+    box-shadow: var(--p-border) var(--p-border) var(--p-100) rgba(0, 0, 0, 0.05);
 }
 
 #defesa {
@@ -662,22 +675,22 @@ button {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    border-radius: 15px 15px 0px 0px;
+    border-radius: var(--p-15) var(--p-15) 0 0;
 }
 
 .publico-text {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 15px;
+    padding: var(--p-15);
 
     .article {
-        font-size: 13px;
-        margin-bottom: 15px;
+        font-size: var(--p-14);
+        margin-bottom: var(--p-15);
     }
 
     p {
-        margin: 15px 0;
+        margin: var(--p-15) 0;
         color: var(--color-grey);
     }
 
@@ -707,7 +720,7 @@ button {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 25px 0;
+    padding: var(--p-20) 0;
 }
 
 .beneficios-row1,
@@ -716,8 +729,8 @@ button {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: var(--p-10);
+    margin-bottom: var(--p-20);
 }
 
 .col-lg-8 {
@@ -736,9 +749,9 @@ button {
     flex-direction: column;
     align-items: start;
     cursor: pointer;
-    padding: 20px;
-    border: 1px solid var(--light-green);
-    border-radius: 15px;
+    padding: var(--p-20);
+    border: var(--p-border) solid var(--light-green);
+    border-radius: var(--p-15);
 }
 
 .row2-item1,
@@ -750,9 +763,9 @@ button {
     flex-direction: column;
     align-items: start;
     cursor: pointer;
-    padding: 20px;
-    border: 1px solid var(--light-green);
-    border-radius: 15px;
+    padding: var(--p-20);
+    border: var(--p-border) solid var(--light-green);
+    border-radius: var(--p-15);
 }
 
 .row1-item1,
@@ -763,7 +776,7 @@ button {
     height: auto;
 
     h3 {
-        margin: 15px 0;
+        margin: var(--p-15) 0;
         color: var(--bg-dark-blue);
     }
 
@@ -810,11 +823,11 @@ button {
     justify-content: center;
     align-items: center;
     background: var(--bg-little-light-grey);
-    border-radius: 15px;
+    border-radius: var(--p-15);
 
     img {
-        max-height: 50px;
-        padding: 10px;
+        max-height: var(--p-50);
+        padding: var(--p-10);
         filter: invert(36%) sepia(84%) saturate(2334%) hue-rotate(196deg) brightness(101%) contrast(105%);
     }
 }
@@ -831,16 +844,16 @@ button {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0;
+    padding: var(--p-20) 0;
 }
 
 .aplicacao-image {
     width: 100%;
-    height: 500px;
+    height: calc(var(--p-100) * 5);
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 15px 15px 0 0;
+    border-radius: var(--p-15) var(--p-15) 0 0;
     background-image: url('../images/deslizamento.jpg');
     background-position: center;
     background-repeat: no-repeat;
@@ -854,11 +867,11 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0 0 15px 15px;
-    box-shadow: 1px 1px 100px rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 var(--p-15) var(--p-15);
+    box-shadow: var(--p-border) var(--p-border) var(--p-100) rgba(0, 0, 0, 0.2);
 
     p {
-        padding: 10px;
+        padding: var(--p-10);
         color: var(--color-grey);
         text-align: center;
     }
@@ -868,19 +881,19 @@ button {
     width: 100%;
     display: flex;
     justify-content: space-around;
-    gap: 10px;
-    margin: 20px 0;
+    gap: var(--p-10);
+    margin: var(--p-20) 0;
 }
 
 .exemplo {
     width: 25%;
     background: var(--bg-white);
-    border-radius: 15px;
-    padding: 20px;
+    border-radius: var(--p-15);
+    padding: var(--p-20);
 
     h3 {
         color: var(--bg-dark-blue);
-        margin: 15px 0;
+        margin: var(--p-15) 0;
     }
 
     p {
@@ -893,7 +906,7 @@ button {
     justify-content: start;
     align-items: center;
     width: 100%;
-    gap: 10px;
+    gap: var(--p-10);
 
     span {
         font-family: JetBrains;
@@ -902,15 +915,15 @@ button {
 }
 
 .exemplo-circle {
-    height: 8px;
-    width: 8px;
+    height: var(--p-8);
+    width: var(--p-8);
     background: var(--bg-light-blue);
     border-radius: 50%;
 }
 
 .exemplo-circle-2 {
-    height: 3px;
-    width: 3px;
+    height: calc(var(--p-border) * 3);
+    width: calc(var(--p-border) * 3);
     background: var(--bg-light-blue);
     border-radius: 50%;
 }
@@ -920,22 +933,22 @@ button {
     justify-content: center;
     align-items: center;
     background: var(--bg-little-light-grey);
-    border-radius: 15px;
-    width: 50px;
-    height: 50px;
-    margin: 15px 0;
+    border-radius: var(--p-15);
+    width: var(--p-50);
+    height: var(--p-50);
+    margin: var(--p-15) 0;
 
     img {
-        max-height: 50px;
-        padding: 10px;
+        max-height: var(--p-50);
+        padding: var(--p-10);
     }
 }
 
 .aplicacao-call-to-action {
     width: 100%;
     background: var(--bg-dark-blue);
-    border-radius: 20px;
-    padding: 45px 50px;
+    border-radius: var(--p-20);
+    padding: var(--p-30);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -950,7 +963,7 @@ button {
     h1 {
         color: var(--bg-white);
         line-height: 1.3;
-        margin-bottom: 15px;
+        margin-bottom: var(--p-15);
     }
 
     p {
@@ -961,14 +974,14 @@ button {
 
 .aplicacao-cta-buttons {
     display: flex;
-    gap: 20px;
+    gap: var(--p-20);
 }
 
 Footer {
     width: 100%;
     height: auto;
     background: var(--bg-dark-blue);
-    padding: 30px 60px;
+    padding: var(--p-30) var(--p-60);
     display: flex;
     align-items: start;
 }
@@ -976,14 +989,14 @@ Footer {
 .footer-logo {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: var(--p-5);
 
     img {
-        max-height: 80px;
+        max-height: var(--p-80);
     }
 
     p {
-        font-size: 25px;
+        font-size: var(--p-20);
         font-weight: 800;
         color: var(--bg-white) !important;
 
@@ -994,7 +1007,7 @@ Footer {
 }
 
 .footer-text {
-    margin-top: 20px;
+    margin-top: var(--p-20);
     color: var(--bg-white);
     max-width: 50%;
 }
@@ -1032,17 +1045,17 @@ Footer {
 }
 
 .form-title{
-    font-size: 50px;
+    font-size: var(--p-50);
     text-align: center  ;
 }
 
 form{
-    padding: 25px;
+    padding: var(--p-20);
     display: flex;
     flex-direction: column;
     label{
         font-family: Inter;
-        padding: 15px 0px;
+        padding: var(--p-15) 0;
 
     }
 }
@@ -1059,8 +1072,8 @@ form{
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
+    gap: var(--p-15);
+    margin-bottom: var(--p-15);
 }
 
 
@@ -1102,8 +1115,8 @@ form{
     }
 
     .rect {
-        height: 50px;
-        width: 50px;
+        height: var(--p-50);
+        width: var(--p-50);
     }
 
     .call-to-action {
@@ -1115,7 +1128,7 @@ form{
 
         img {
             max-width: 100%;
-            padding: 15px;
+            padding: var(--p-15);
         }
 
         .text {
@@ -1146,7 +1159,7 @@ form{
 
     .publico-content {
         width: 100%;
-        margin: 20px 0;
+        margin: var(--p-20) 0;
     }
 
     .aplicacao-exemplos {
@@ -1164,14 +1177,14 @@ form{
 
     .aplicacao-cta-text {
         max-width: 100% !important;
-        margin-bottom: 20px;
+        margin-bottom: var(--p-20);
     }
 }
 
 
 @media(max-width: 850px) {
     section {
-        padding: 30px 40px;
+        padding: var(--p-30);
     }
 
     .interface {
@@ -1179,12 +1192,12 @@ form{
     }
 
     .rect {
-        height: 45px;
-        width: 45px;
+        height: var(--p-50);
+        width: var(--p-50);
     }
 
     .aplicacao-image {
-        height: 350px;
+        height: 3var(--p-50);
     }
 
     .beneficios-row1,
@@ -1206,16 +1219,20 @@ form{
     .objectives-grid {
         width: 100%;
     }
+    .rect {
+        height: calc(var(--p-50) - var(--p-5));
+        width: calc(var(--p-50) - var(--p-5));
+    }
 }
 
 @media(max-width: 500px) {
     .rect {
-        height: 38px;
-        width: 38px;
+        height: calc(var(--p-50) - var(--p-10));
+        width: calc(var(--p-50) - var(--p-10));
     }
 
     .title {
-        font-size: 55px;
+        font-size: var(--p-50);
     }
 
     .moon-grid {
@@ -1223,25 +1240,27 @@ form{
     }
 
     .aplicacao-image {
-        height: 200px;
+        height: calc(var(--p-100) * 2);
     }
 
     .objectives-grid {
-        margin: 20px 0;
+        margin: var(--p-20) 0;
     }
 
     .objective-img {
-        margin: 8px;
+        margin: var(--p-8);
     }
 
     .objective {
-        padding: 15px;
+        padding: var(--p-15);
 
         p {
             display: none;
         }
     }
-
+    section{
+        padding: var(--p-30);
+    }
     .aplicacao-cta-buttons {
         flex-direction: column;
     }
@@ -1249,8 +1268,8 @@ form{
 
 @media(max-width: 430px) {
     .rect {
-        height: 30px;
-        width: 30px;
+        height: var(--p-30);
+        width: var(--p-30);
     }
 }
 
