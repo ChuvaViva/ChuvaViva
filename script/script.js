@@ -22,9 +22,34 @@ const alertMessage = document.querySelector(".alertMessage")
 const successMessage = document.querySelector(".successMessage")
 const radios = document.querySelectorAll('input[name="option"]')
 const questionColor = document.querySelectorAll('.question')
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav-hero-menu a");
 let currentQuestion = 1
 let corretas = 0
 let enviado = false
+
+
+window.addEventListener("scroll", () => {
+    let activeSection = "";
+
+    sections.forEach(section => {
+        const top = section.offsetTop - 100;
+
+        if (window.scrollY >= top) {
+            activeSection = section.id;
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === `#${activeSection}`) {
+            link.classList.add("activeLink");
+        }else{
+            link.classList.remove("activeLink");
+        }
+    });
+});
 
 const questions = {
     1: {
