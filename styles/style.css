@@ -17,7 +17,7 @@ h6,
 li,
 button {
     font-family: Inter;
-    color: #060041;
+    color: var(--bg-dark-blue);
 }
 
 html {
