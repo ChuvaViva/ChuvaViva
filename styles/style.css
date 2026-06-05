@@ -17,7 +17,7 @@ h6,
 li,
 button {
     font-family: Inter;
-    color: var(--bg-dark-blue);
+    color: var(--bg-primary-color);
 }
 
 html {
@@ -31,7 +31,7 @@ a {
 :root {
     --bg-white: #fff;
     --bg-little-white: #fbfbfb;
-    --bg-dark-blue: #0f1b2d;
+    --bg-primary-color: #0f1b2d;
     --bg-light-blue: #147cdd;
     --bg-light-grey: #F5F6F8;
     --bg-little-light-grey: #e0e0e0;
@@ -122,7 +122,7 @@ section {
     p {
         font-size: var(--p-20);
         font-weight: 800;
-        color: var(--bg-dark-blue);
+        color: var(--bg-primary-color);
 
         span {
             color: var(--bg-light-blue);
@@ -149,7 +149,7 @@ section {
 .mobile-menu {
     position: absolute;
     padding: var(--p-20) var(--p-5);
-    background-color: var(--bg-dark-blue);
+    background-color: var(--bg-primary-color);
     top: 0;
     left: -50%;
     height: 100dvh;
@@ -182,6 +182,22 @@ section {
                 color: var(--bg-white);
             }
         }
+    }
+}
+
+.theme {
+    background: var(--bg-primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+
+    img {
+        max-height: 40px;
+        max-width: 40px;
+        filter: brightness(0) invert(1);
+        padding: 5px;
     }
 }
 
@@ -247,7 +263,7 @@ button {
 }
 
 .btn {
-    background: var(--bg-dark-blue);
+    background: var(--bg-primary-color);
     padding: var(--p-20) var(--p-30);
     color: var(--bg-white);
     border-radius: var(--p-15);
@@ -258,15 +274,15 @@ button {
 
 .btn:hover {
     background: var(--bg-white);
-    color: var(--bg-dark-blue);
-    border: var(--p-border) solid var(--bg-dark-blue);
+    color: var(--bg-primary-color);
+    border: var(--p-border) solid var(--bg-primary-color);
 }
 
 .btn-white {
     background: var(--bg-white);
     padding: var(--p-20) var(--p-30);
-    color: var(--bg-dark-blue);
-    border: var(--p-border) solid var(--bg-dark-blue);
+    color: var(--bg-primary-color);
+    border: var(--p-border) solid var(--bg-primary-color);
     border-radius: var(--p-15);
     font-size: var(--p-15);
     font-weight: 750;
@@ -274,7 +290,7 @@ button {
 }
 
 .btn-white:hover {
-    background: var(--bg-dark-blue);
+    background: var(--bg-primary-color);
     color: var(--bg-white);
     border: var(--p-border) solid var(--bg-white);
 }
@@ -292,7 +308,7 @@ button {
 
 .btn-transparent:hover {
     background: var(--bg-white);
-    color: var(--bg-dark-blue);
+    color: var(--bg-primary-color);
     border: none;
 }
 
@@ -488,7 +504,7 @@ button {
     p {
         font-family: JetBrains;
         font-size: var(--p-30);
-        color: var(--bg-dark-blue);
+        color: var(--bg-primary-color);
     }
 
     .description {
@@ -642,7 +658,7 @@ button {
     }
 
     h3 {
-        color: var(--bg-dark-blue);
+        color: var(--bg-primary-color);
     }
 }
 
@@ -792,7 +808,7 @@ button {
 
     h3 {
         margin: var(--p-15) 0;
-        color: var(--bg-dark-blue);
+        color: var(--bg-primary-color);
     }
 
     p {
@@ -801,7 +817,7 @@ button {
 }
 
 .style {
-    background-color: var(--bg-dark-blue);
+    background-color: var(--bg-primary-color);
 
     h3,
     p {
@@ -813,7 +829,7 @@ button {
     }
 
     .beneficio-image {
-        background: #bfd9f24d;
+        background: var(--color-grey);
 
         img {
             filter: brightness(0) invert(1);
@@ -907,7 +923,7 @@ button {
     padding: var(--p-20);
 
     h3 {
-        color: var(--bg-dark-blue);
+        color: var(--bg-primary-color);
         margin: var(--p-15) 0;
     }
 
@@ -961,7 +977,7 @@ button {
 
 .aplicacao-call-to-action {
     width: 100%;
-    background: var(--bg-dark-blue);
+    background: var(--bg-primary-color);
     border-radius: var(--p-20);
     padding: var(--p-30);
     display: flex;
@@ -995,7 +1011,7 @@ button {
 Footer {
     width: 100%;
     height: auto;
-    background: var(--bg-dark-blue);
+    background: var(--bg-primary-color);
     padding: var(--p-30) var(--p-60);
     display: flex;
     align-items: start;
@@ -1181,7 +1197,7 @@ form {
     animation: flutuarVerde 0.6s ease-out forwards;
 
     h4 {
-        color: var(--bg-dark-blue);
+        color: var(--bg-primary-color);
     }
 }
 

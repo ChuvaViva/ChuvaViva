@@ -24,11 +24,34 @@ const radios = document.querySelectorAll('input[name="option"]')
 const questionColor = document.querySelectorAll('.question')
 const sections = document.querySelectorAll("section[id]");
 const navLinks = document.querySelectorAll(".nav-hero-menu a");
+const theme = document.querySelector(".theme")
+const themeImage = document.querySelector("#themeImage")
 let currentQuestion = 1
 let corretas = 0
 let enviado = false
-
-
+const changeTheme = () => {
+    if (localStorage.getItem("theme") === "sun") {
+        localStorage.setItem("theme", "moon")
+    } else if (localStorage.getItem("theme") === "moon") {
+        localStorage.setItem("theme", "tree")
+    } else {
+        localStorage.setItem("theme", "sun")
+    }
+}
+const updateTheme = () => {
+    themeImage.src = `./images/icons/${localStorage.getItem("theme")}.svg`
+    if (localStorage.getItem("theme") === "sun") {
+        themeImage.src = './images/icons/moon.svg'
+        document.documentElement.style.setProperty('--bg-primary-color', '#0d0b6b');
+    } else if (localStorage.getItem("theme") === "moon") {
+        themeImage.src = './images/icons/tree.svg'
+        document.documentElement.style.setProperty('--bg-primary-color', '#6dca61');
+    } else {
+        themeImage.src = './images/icons/sun.svg'
+        document.documentElement.style.setProperty('--bg-primary-color', '#e7d916');
+    }
+}
+updateTheme()
 window.addEventListener("scroll", () => {
     let activeSection = "";
 
@@ -45,11 +68,16 @@ window.addEventListener("scroll", () => {
 
         if (link.getAttribute("href") === `#${activeSection}`) {
             link.classList.add("activeLink");
-        }else{
+        } else {
             link.classList.remove("activeLink");
         }
     });
 });
+
+theme.addEventListener("click", () => {
+    changeTheme()
+    updateTheme()
+})
 
 const questions = {
     1: {
@@ -307,7 +335,7 @@ const updateInfo = () => {
     }
 }
 
-const clearQuestions = () =>{
+const clearQuestions = () => {
     questionColor.forEach(element => {
         element.classList.remove("correct")
         element.classList.remove("incorrect")
