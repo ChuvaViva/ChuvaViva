@@ -73,6 +73,60 @@ a {
     --p-2: 2px;
 }
 
+.theme-moon {
+    --bg-white: #111827;
+    --bg-little-white: #1F2937;
+    --bg-primary-color: #F9FAFB;
+
+    --bg-light-grey: #0F172A;
+    --bg-little-light-grey: #334155;
+
+    --color-grey: #CBD5E1;
+    --color-light-grey: #94A3B8;
+    --border-grey: #475569;
+
+    --bg-light-blue: #60A5FA;
+
+    --light-green: #163126;
+    --green: #1E4A38;
+    --border-green: #4ADE80;
+
+    --light-yellow: #3D2D14;
+    --yellow: #5B431C;
+    --border-yellow: #FACC15;
+
+    --light-red: #3A1C22;
+    --red: #5A2932;
+    --border-red: #FB7185;
+}
+
+.theme-tree {
+    --bg-white: #F3FAF4;
+    --bg-little-white: #E8F5EA;
+
+    --bg-primary-color: #1B4332;
+    --bg-light-blue: #2D6A4F;
+
+    --bg-light-grey: #D8F3DC;
+    --bg-little-light-grey: #B7E4C7;
+
+    --color-grey: #52796F;
+    --color-light-grey: #84A98C;
+    --border-grey: #95D5B2;
+
+    --light-green: #D8F3DC;
+    --green: #95D5B2;
+    --border-green: #2D6A4F;
+
+    --light-yellow: #FFF3CD;
+    --yellow: #FFE8A1;
+    --border-yellow: #D4A017;
+
+    --light-red: #FFD6D6;
+    --red: #FF9E9E;
+    --border-red: #D65A5A;
+}
+
 @font-face {
     font-family: JetBrains;
     src: url(../fonts/JetBrainsMono-Regular.ttf);
@@ -192,6 +246,9 @@ section {
     align-items: center;
     border-radius: 50%;
     cursor: pointer;
+    position: absolute;
+    bottom: var(--p-30);
+    right: var(--p-30);
 
     img {
         max-height: 40px;

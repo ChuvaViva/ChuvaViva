@@ -41,14 +41,17 @@ const changeTheme = () => {
 const updateTheme = () => {
     themeImage.src = `./images/icons/${localStorage.getItem("theme")}.svg`
     if (localStorage.getItem("theme") === "sun") {
-        themeImage.src = './images/icons/moon.svg'
-        document.documentElement.style.setProperty('--bg-primary-color', '#0d0b6b');
-    } else if (localStorage.getItem("theme") === "moon") {
-        themeImage.src = './images/icons/tree.svg'
-        document.documentElement.style.setProperty('--bg-primary-color', '#6dca61');
-    } else {
         themeImage.src = './images/icons/sun.svg'
-        document.documentElement.style.setProperty('--bg-primary-color', '#e7d916');
+        document.documentElement.classList.remove("theme-moon")
+        document.documentElement.classList.remove("theme-tree")
+    } else if (localStorage.getItem("theme") === "moon") {
+        themeImage.src = './images/icons/moon.svg'
+        document.documentElement.classList.add("theme-moon")
+        document.documentElement.classList.remove("theme-tree")
+    } else {
+        themeImage.src = './images/icons/tree.svg'
+        document.documentElement.classList.remove("theme-moon")
+        document.documentElement.classList.add("theme-tree")
     }
 }
 updateTheme()
