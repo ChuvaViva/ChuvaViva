@@ -20,7 +20,8 @@ const explanations = document.querySelector(".explanations")
 const explanation = document.querySelector("#explanation")
 const alertMessage = document.querySelector(".alertMessage")
 const successMessage = document.querySelector(".successMessage")
-const radios = (document.querySelectorAll('input[name="option"]'))
+const radios = document.querySelectorAll('input[name="option"]')
+const questionColor = document.querySelectorAll('.question')
 let currentQuestion = 1
 let corretas = 0
 let enviado = false
@@ -228,15 +229,12 @@ const verifyBlank = () => {
 const verifyAnswer = (index) => {
     const user = answers[index].resposta
     const quiz = questions[currentQuestion].correta
-    console.log("User:", user)
-    console.log("Quiz:", quiz)
 
     if (user === quiz) {
         answers[index].correta = true
     } else {
         answers[index].correta = false
     }
-    console.log("Corretas: ", answers)
 }
 
 
@@ -264,26 +262,44 @@ const updateInfo = () => {
         }
     } else {
         prox.classList.remove("d-none")
+        prox.textContent = "Próximo"
     }
 
     if (enviado) {
         explanations.classList.remove("d-none")
         explanation.textContent = questions[currentQuestion].explicacao
+        if (answers[currentQuestion].correta === true) {
+            questionIndex.textContent = `Pergunta nº ${currentQuestion} - Correta`
+            const questionCorreta = questionColor[answers[currentQuestion].resposta - 1]
+            clearQuestions()
+            questionColor[answers[currentQuestion].resposta - 1].classList.add("correct")
+        } else {
+            questionIndex.textContent = `Pergunta nº ${currentQuestion} - Incorreta`
+            clearQuestions()
+            questionColor[questions[currentQuestion].correta - 1].classList.add("correct")
+            questionColor[answers[currentQuestion].resposta - 1].classList.add("incorrect")
+        }
     }
+}
+
+const clearQuestions = () =>{
+    questionColor.forEach(element => {
+        element.classList.remove("correct")
+        element.classList.remove("incorrect")
+    })
 }
 
 const sumCorretas = () => {
     const totalCorretas = Object.values(answers).filter(answer => answer.correta === true).length;
-    console.log("Total de respostas corretas: ", totalCorretas);
     corretas = totalCorretas;
     successMessage.classList.remove("d-none")
     successMessage.textContent = `Parabéns`
-    if(corretas >= 7){
+    if (corretas >= 7) {
         successMessage.textContent = `Parabéns, você acertou ${corretas} perguntas de 10. Muito bom!`
     }
-    else if (corretas === 6){
+    else if (corretas === 6) {
         successMessage.textContent = `Parabéns, você acertou ${corretas} perguntas de 10. Dá para passar de ano...`
-    }else{
+    } else {
         successMessage.textContent = `Você acertou ${corretas} perguntas de 10. Dá para melhorar...`
     }
 }
@@ -303,8 +319,7 @@ prox.addEventListener("click", () => {
                 sumCorretas()
                 return
             }
-            if (answers[currentQuestion].resposta != 0) { //
-                console.log("Já tem uma resposta registrada: ", answers)
+            if (answers[currentQuestion].resposta != 0) {
                 answers[currentQuestion].resposta = Number(document.querySelector('input[name="option"]:checked').value)
                 verifyAnswer(currentQuestion)
                 currentQuestion = currentQuestion + 1
@@ -313,7 +328,6 @@ prox.addEventListener("click", () => {
             } else {
                 answers[currentQuestion].resposta = Number(document.querySelector('input[name="option"]:checked').value)
                 verifyAnswer(currentQuestion)
-                console.log("vamos ver no que dá: ", answers)
                 currentQuestion = currentQuestion + 1
                 document.querySelector('input[name="option"]:checked').checked = false
                 updateInfo()
