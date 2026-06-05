@@ -18,6 +18,9 @@ const questionIndex = document.querySelector("#question-index")
 const buttons = document.querySelector("#buttons")
 const explanations = document.querySelector(".explanations")
 const explanation = document.querySelector("#explanation")
+const alertMessage = document.querySelector(".alertMessage")
+const successMessage = document.querySelector(".successMessage")
+const radios = (document.querySelectorAll('input[name="option"]'))
 let currentQuestion = 1
 let corretas = 0
 let enviado = false
@@ -137,31 +140,40 @@ const questions = {
 
 const answers = {
     1: {
-        resposta: 0
+        resposta: 0,
+        correta: false
     },
     2: {
-        resposta: 0
+        resposta: 0,
+        correta: false
     },
     3: {
-        resposta: 0
+        resposta: 0,
+        correta: false
     },
     4: {
-        resposta: 0
+        resposta: 0,
+        correta: false
     },
     5: {
-        resposta: 0
+        resposta: 0,
+        correta: false
     },
     6: {
-        resposta: 0
+        resposta: 0,
+        correta: false
     },
     7: {
-        resposta: 0
+        resposta: 0,
+        correta: false
     },
     8: {
-        resposta: 0
+        resposta: 0,
+        correta: false
     },
     9: {
-        resposta: 0
+        resposta: 0,
+        correta: false
     },
     10: {
         resposta: 0
@@ -205,6 +217,28 @@ option3.textContent = questions[1].opcoes[2]
 option4.textContent = questions[1].opcoes[3]
 prev.classList.add("d-none")
 
+const verifyBlank = () => {
+    if (document.querySelector('input[name="option"]:checked') === null) {
+        return false
+    } else {
+        return true
+    }
+}
+
+const verifyAnswer = (index) => {
+    const user = answers[index].resposta
+    const quiz = questions[currentQuestion].correta
+    console.log("User:", user)
+    console.log("Quiz:", quiz)
+
+    if (user === quiz) {
+        answers[index].correta = true
+    } else {
+        answers[index].correta = false
+    }
+    console.log("Corretas: ", answers)
+}
+
 
 const updateInfo = () => {
     questionIndex.textContent = `Pergunta nº ${currentQuestion}`
@@ -213,6 +247,9 @@ const updateInfo = () => {
     option2.textContent = questions[currentQuestion].opcoes[1]
     option3.textContent = questions[currentQuestion].opcoes[2]
     option4.textContent = questions[currentQuestion].opcoes[3]
+    if (answers[currentQuestion].resposta != 0) {
+        radios[answers[currentQuestion].resposta - 1].checked = true
+    }
     if (currentQuestion === 1) {
         prev.classList.add("d-none")
     } else {
@@ -229,75 +266,66 @@ const updateInfo = () => {
         prox.classList.remove("d-none")
     }
 
-    if(enviado){
+    if (enviado) {
         explanations.classList.remove("d-none")
         explanation.textContent = questions[currentQuestion].explicacao
-        console.log(answers)
     }
 }
 
-const verifyBlank = () => {
-    if (document.querySelector('input[name="option"]:checked') === null) {
-        return false
-    } else {
-        return true
+const sumCorretas = () => {
+    const totalCorretas = Object.values(answers).filter(answer => answer.correta === true).length;
+    console.log("Total de respostas corretas: ", totalCorretas);
+    corretas = totalCorretas;
+    successMessage.classList.remove("d-none")
+    successMessage.textContent = `Parabéns`
+    if(corretas >= 7){
+        successMessage.textContent = `Parabéns, você acertou ${corretas} perguntas de 10. Muito bom!`
+    }
+    else if (corretas === 6){
+        successMessage.textContent = `Parabéns, você acertou ${corretas} perguntas de 10. Dá para passar de ano...`
+    }else{
+        successMessage.textContent = `Você acertou ${corretas} perguntas de 10. Dá para melhorar...`
     }
 }
-
-const verifyAnswer = (index) => {
-    const user = answers[index].resposta
-    const quiz = questions[currentQuestion].correta
-    if (user === quiz) {
-        corretas = corretas + 1
-    }
-}
-
-const setAnswer = () => {
-    const index = answers[currentQuestion].resposta
-    const radios = (document.querySelectorAll('input[name="option"]'))
-    radios[index - 1].checked = true
-}
-
 
 prox.addEventListener("click", () => {
     if (!verifyBlank()) {
-        window.alert("Insira uma resposta")
+        alertMessage.classList.remove("d-none")
     } else {
+        alertMessage.classList.add("d-none")
         if (!enviado) {
-            answers[currentQuestion].resposta = Number(document.querySelector('input[name="option"]:checked').value)
-            verifyAnswer(currentQuestion)
             if (currentQuestion === 10) {
-                console.log("Emtrou aqui")
-                enviado = true
                 currentQuestion = 10
-                window.alert(`Corretas: ${corretas}`)
-                console.log(currentQuestion)
+                answers[currentQuestion].resposta = Number(document.querySelector('input[name="option"]:checked').value)
+                verifyAnswer(currentQuestion)
+                enviado = true
                 updateInfo()
+                sumCorretas()
                 return
             }
-            currentQuestion = currentQuestion + 1
-            if (answers[currentQuestion].resposta != 0) {
-                setAnswer()
-            } else {
+            if (answers[currentQuestion].resposta != 0) { //
+                console.log("Já tem uma resposta registrada: ", answers)
+                answers[currentQuestion].resposta = Number(document.querySelector('input[name="option"]:checked').value)
+                verifyAnswer(currentQuestion)
+                currentQuestion = currentQuestion + 1
                 document.querySelector('input[name="option"]:checked').checked = false
-
+                updateInfo()
+            } else {
+                answers[currentQuestion].resposta = Number(document.querySelector('input[name="option"]:checked').value)
+                verifyAnswer(currentQuestion)
+                console.log("vamos ver no que dá: ", answers)
+                currentQuestion = currentQuestion + 1
+                document.querySelector('input[name="option"]:checked').checked = false
                 updateInfo()
             }
         } else {
             currentQuestion = currentQuestion + 1
-            setAnswer()
             updateInfo()
         }
     }
-    console.log(currentQuestion)
 })
 
 prev.addEventListener("click", () => {
-    if (!enviado) {
-        corretas = corretas - 1
-    }
     currentQuestion = currentQuestion - 1
-    setAnswer()
     updateInfo()
-    console.log(currentQuestion)
 })
