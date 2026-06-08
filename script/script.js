@@ -44,14 +44,17 @@ const updateTheme = () => {
         themeImage.src = './images/icons/sun.svg'
         document.documentElement.classList.remove("theme-moon")
         document.documentElement.classList.remove("theme-tree")
+        themeImage.style.filter = "brightness(0) invert(1)";
     } else if (localStorage.getItem("theme") === "moon") {
         themeImage.src = './images/icons/moon.svg'
         document.documentElement.classList.add("theme-moon")
         document.documentElement.classList.remove("theme-tree")
+        themeImage.style.filter = "brightness(0)";
     } else {
         themeImage.src = './images/icons/tree.svg'
         document.documentElement.classList.remove("theme-moon")
         document.documentElement.classList.add("theme-tree")
+        themeImage.style.filter = "brightness(0) invert(1)";
     }
 }
 updateTheme()

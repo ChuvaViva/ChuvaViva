@@ -74,8 +74,8 @@ a {
 }
 
 .theme-moon {
-    --bg-white: #111827;
-    --bg-little-white: #1F2937;
+    --bg-white: #202c46;
+    --bg-little-white: #314055;
     --bg-primary-color: #F9FAFB;
 
     --bg-light-grey: #0F172A;
@@ -246,14 +246,13 @@ section {
     align-items: center;
     border-radius: 50%;
     cursor: pointer;
-    position: absolute;
+    position: fixed;
     bottom: var(--p-30);
     right: var(--p-30);
 
     img {
         max-height: 40px;
         max-width: 40px;
-        filter: brightness(0) invert(1);
         padding: 5px;
     }
 }
@@ -1167,6 +1166,49 @@ form {
     align-items: center;
     gap: var(--p-15);
     margin-bottom: var(--p-15);
+}
+
+.slideShow {
+    width: 90%;
+    display: flex;
+    overflow-x: auto;
+    margin: auto;
+    border-radius: var(--p-15);
+}
+
+.slideShow::-webkit-scrollbar {
+    display: none;
+}
+
+@keyframes rolar {
+    from {
+        translate: 0;
+    }
+
+    to {
+        translate: -100%;
+    }
+}
+
+.group {
+    display: flex;
+    gap: var(--p-10);
+    flex: 0 0 var(--p-30);
+    animation: rolar 10s ease-in-out infinite;
+    padding-right: var(--p-10);
+
+    div {
+        background-color: blueviolet;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            max-width: calc(var(--p-100) * 8);
+            max-height: calc(var(--p-100) * 3);
+        }
+    }
 }
 
 @keyframes flutuar {
