@@ -185,3 +185,37 @@ O seu CSS já está muito bem estruturado com variáveis. Vou criar os temas alt
 }
 
 O QUE FOI ALTERADO OU REJEITADO E O MOTIVO: Não alterei nada nas cores definidas pela IA, gostei bastante do resultado dos outros dois temas.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+SOLICITAÇÃO 3:
+
+O QUE PEDI PARA A IA? Depois de adicionar os campos do formulário de contato, vi que teria que fazer o tratamento da máscara de telefone e que ela seria dinâmico quando o celular tivesse 10 dígitos - (99) 9999-9999 - ou 11 dígitos - (99) 99999-9999. Essa parte eu realmente não sabia fazer, só sabia que deveria criar um eventListener do tipo input para verificar a cada caractere digitado pelo usuário, porém, o que fazer com esses dados posteriormente eu pedi para a IA: "com base nesse meu arquivo JS (colei o arquivo JS) me retorne a função que cria a máscara de telefone dinamicamente de acordo com a digitação do usuário."
+
+O QUE A IA RETORNOU: 
+Vejo que você já tem const phone = document.querySelector("#telefone") declarado no topo do arquivo. Só falta adicionar o listener. Cola isso no final do script.js:
+phone.addEventListener('input', () => {
+    let v = phone.value.replace(/\D/g, '')
+
+    if (v.length <= 10) {
+        v = v.replace(/(\d{0,2})(\d{0,4})(\d{0,4})/, (_, ddd, parte1, parte2) => {
+            if (!ddd) return ''
+            if (!parte1) return `(${ddd}`
+            if (!parte2) return `(${ddd}) ${parte1}`
+            return `(${ddd}) ${parte1}-${parte2}`
+        })
+    } else {
+        v = v.replace(/(\d{0,2})(\d{0,5})(\d{0,4})/, (_, ddd, parte1, parte2) => {
+            if (!ddd) return ''
+            if (!parte1) return `(${ddd}`
+            if (!parte2) return `(${ddd}) ${parte1}`
+            return `(${ddd}) ${parte1}-${parte2}`
+        })
+    }
+
+    phone.value = v
+})
+
+O QUE FOI ALTERADO OU REJEITADO E O MOTIVO: Alterei o nome da variável v para "telefone" para ficar semântico e não coloquei a função no fim do arquivo script.js como foi orientado.
